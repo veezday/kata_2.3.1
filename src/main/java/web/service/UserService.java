@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import web.model.User;
 import web.repository.UserRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,13 +16,18 @@ public class UserService implements CrudService<User, Long> {
     }
 
     @Override
-    public <S extends User> S save(S entity) {
-        return userRepository.save(entity);
+    public void save(User entity) {
+        userRepository.save(entity);
     }
 
     @Override
-    public <S extends User> Iterable<S> saveAll(Iterable<S> entities) {
-        return userRepository.saveAll(entities);
+    public void update(User entity) {
+        userRepository.update(entity);
+    }
+
+    @Override
+    public void saveAll(List<User> entities) {
+        userRepository.saveAll(entities);
     }
 
     @Override
@@ -30,47 +36,12 @@ public class UserService implements CrudService<User, Long> {
     }
 
     @Override
-    public boolean existsById(Long aLong) {
-        return userRepository.existsById(aLong);
-    }
-
-    @Override
     public Iterable<User> findAll() {
         return userRepository.findAll();
     }
 
     @Override
-    public Iterable<User> findAllById(Iterable<Long> longs) {
-        return userRepository.findAllById(longs);
-    }
-
-    @Override
-    public long count() {
-        return userRepository.count();
-    }
-
-    @Override
     public void deleteById(Long aLong) {
         userRepository.deleteById(aLong);
-    }
-
-    @Override
-    public void delete(User entity) {
-        userRepository.delete(entity);
-    }
-
-    @Override
-    public void deleteAllById(Iterable<? extends Long> longs) {
-        userRepository.deleteAllById(longs);
-    }
-
-    @Override
-    public void deleteAll(Iterable<? extends User> entities) {
-        userRepository.deleteAll(entities);
-    }
-
-    @Override
-    public void deleteAll() {
-        userRepository.deleteAll();
     }
 }

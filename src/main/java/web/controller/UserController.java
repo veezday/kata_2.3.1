@@ -65,7 +65,7 @@ public class UserController {
             user.setSurname(surname);
             user.setEmail(email);
             user.setRole(ROLE.valueOf(role));
-            userService.save(user);
+            userService.update(user);
         }
 
         return new RedirectView("/");
